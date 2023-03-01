@@ -1,10 +1,9 @@
-//TODO: import combineReducers from redux
-//TODO: import reducer-user
+import { combineReducers } from "redux";
+import UserReducer from "./reducer-user"
 
-/*
+
 const rootReducer = combineReducers({
-  user: //UserReducer
+  user: UserReducer
 });
 
 export default rootReducer;
-*/
