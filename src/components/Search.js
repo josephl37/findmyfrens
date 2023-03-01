@@ -1,16 +1,19 @@
 import logo from "../public/wordart.png";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { fetchUser } from "../actions";
 
 const Search = () => {
   const [search, setSearch] = useState("");
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetchUser(search)
+
+    dispatch (
+      fetchUser(search)
+    )
   }
-
-
 
   return (
     //TODO: fill out HTML w/ bootstrap styling
