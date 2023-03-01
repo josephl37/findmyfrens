@@ -1,9 +1,12 @@
-//TODO: import axios for API
-//TODO: export action
+import axios from "axios"
 
-//TODO: set up and export actionCreator
+
+export const FETCH_DATA = "FETCH_DATA"
+
 export function fetchUser(query) {
-  //TODO: set up axios.get
-
-  //TODO: return type and payload
+  const request =  axios.get(`ensdata.net/${query}`)
+  return {
+    type: FETCH_DATA,
+    payload: request,
+  }
 }
