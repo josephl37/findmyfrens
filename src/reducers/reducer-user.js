@@ -1,17 +1,10 @@
 import { FETCH_DATA } from "../actions"
-
-//TODO: set up default state
-
-const DEFAULT_STATE = {}
-
-
-//TODO: set up userReducer function
+const DEFAULT_STATE = null
 
 const userReducer = function (state = DEFAULT_STATE, action) {
   switch (action.type) {
     case FETCH_DATA:
       const data = action.payload.data;
-      console.log(data);
       
       return {
         address: data.address,
@@ -19,7 +12,6 @@ const userReducer = function (state = DEFAULT_STATE, action) {
         twitter: data.twitter,
         avatar: data.avatar
       }
-      
     default: 
       return state;
   }

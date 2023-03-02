@@ -11,6 +11,8 @@ const Search = () => {
     e.preventDefault();
 
     dispatch(fetchUser(search));
+
+    setSearch('');
   };
 
   return (
