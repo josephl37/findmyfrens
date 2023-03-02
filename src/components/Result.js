@@ -20,7 +20,7 @@ const Result = () => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Result;
