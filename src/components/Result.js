@@ -2,8 +2,23 @@ import { useSelector } from "react-redux";
 import "./Result.css";
 
 const Result = () => {
-  // TODO: use useSelector to get state
   const user = useSelector((state) => state.info);
+  console.log(user);
+
+  const renderTwitter = () => {
+    if (user.twitter) {
+      return (
+        <p>
+          You can find {user.ens} on{" "}
+          <a href={`https://twitter.com/${user.twitter}`} target="_blank">
+            Twitter
+          </a>
+        </p>
+      );
+    } else {
+      return <p>Sorry can't find {user.ens} on Twitter</p>;
+    }
+  };
 
   const renderResults = () => {
     if (user) {
@@ -19,23 +34,14 @@ const Result = () => {
           <div>
             <h3>{user.ens}</h3>
             <p>{user.address}</p>
-            <p>
-              You can find {user.ens} on{" "}
-              <a href={`https://twitter.com/${user.twitter}`} target="_blank">
-                Twitter
-              </a>
-            </p>
+            {renderTwitter()}
           </div>
         </div>
       );
     }
   };
 
-  return (
-    <div>
-      {renderResults()}
-    </div>
-  );
+  return <div>{renderResults()}</div>;
 };
 
 export default Result;
