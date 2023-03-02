@@ -22,12 +22,13 @@ const Result = () => {
           onError={handlePfpError}
         />
       );
-    } else if (user.avatar_url) {
+    } else if (user.avatar_url && !invalidPfp) {
       return (
         <img
           className="rounded image_pfp"
           src={`${user.avatar_url}`}
           alt="pfp"
+          onError={handlePfpError}
         />
       );
     } else {
