@@ -12,7 +12,7 @@ const Search = () => {
 
     dispatch(fetchUser(search));
 
-    setSearch('');
+    setSearch("");
   };
 
   return (
