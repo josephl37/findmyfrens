@@ -7,12 +7,13 @@ import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import reducers from "./reducers";
 import promise from "redux-promise"
+import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
-
-//TODO: set up applyMiddleware and reduxPromises
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
-const toolStore = createStoreWithMiddleware(reducers, composeWithDevTools())
+const toolStore = createStore(
+    reducers, 
+    composeWithDevTools(applyMiddleware(thunk, promise))
+  )
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

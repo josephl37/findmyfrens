@@ -5,7 +5,7 @@ import defaultPic from "../public/default_pic.png";
 import "./Result.css";
 
 const Result = () => {
-  const user = useSelector((state) => state.info);
+  const { user, loading, error } = useSelector((state) => state.info);
   const [invalidPfp, setInvalidPfp] = useState(false);
 
   const handlePfpError = () => {
@@ -37,7 +37,7 @@ const Result = () => {
   };
 
   const renderTwitter = () => {
-    if (user.twitter) {
+    if (user && user.twitter) {
       return (
         <p>
           You can find {user.ens} on{" "}
@@ -46,13 +46,31 @@ const Result = () => {
           </a>
         </p>
       );
-    } else {
+    } else if (user) {
       return <p>Sorry can't find {user.ens} on Twitter</p>;
+    } else {
+      return null;
     }
   };
 
   const renderResults = () => {
-    if (user) {
+    if (loading) {
+      return (
+        <div className="d-flex justify-content-center align-items-center mt-5">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      );
+    } else if (error) {
+      return (
+        <div className="d-flex justify-content-center align-items-center mt-5">
+          <h4>Sorry, we can't find your fren :( </h4>
+        </div>
+      );
+    } else if (!user) {
+      return null;
+    } else {
       return (
         <div className="d-flex justify-content-center mt-5">
           <div className="mx-4">{renderPFP()}</div>
